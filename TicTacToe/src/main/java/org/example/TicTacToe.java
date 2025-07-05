@@ -23,7 +23,6 @@ public class TicTacToe {
         if (board.isCellEmpty(row, col)) {
             board.place(row, col, currentPlayer.getMarker());
             System.out.println("Player " + currentPlayer.getMarker() + " placed at (" + row + ", " + col + ")");
-            board.print();
             switchCurrentPlayer();
         } else {
             System.out.println("Cell is already occupied. Choose another one.");
