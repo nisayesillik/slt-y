@@ -31,7 +31,7 @@ public class Main {
             playAgain = answer.equalsIgnoreCase("y");
         }
 
-        System.out.println("Thanks for playing!");
+        System.out.println("Thank you for playing!");
     }
 }
 
