@@ -3,11 +3,10 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-
         Scanner scanner = new Scanner(System.in);
         TicTacToe game = new TicTacToe();
 
-        while (true) {
+        while (!game.isGameEnded()) {
             System.out.println("Current Player: " + game.getCurrentPlayer().getMarker());
 
             System.out.print("Enter row (0-2): ");
@@ -17,9 +16,8 @@ public class Main {
             int col = scanner.nextInt();
 
             game.makeMove(row, col);
-
             game.getBoard().print();
-
         }
+
     }
 }
