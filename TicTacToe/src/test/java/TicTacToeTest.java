@@ -71,4 +71,61 @@ public class TicTacToeTest {
         assertEquals(before, after);
     }
 
+    // 8. Positiver Test: checkWin erkennt horizontale Gewinnreihe
+    @Test
+    public void testCheckWinHorizontal() {
+        game.getBoard().place(0, 0, 'X');
+        game.getBoard().place(0, 1, 'X');
+        game.getBoard().place(0, 2, 'X');
+        assertTrue(game.checkWin('X'));
+    }
+
+    // 9. Positiver Test: checkWin erkennt vertikale Gewinnreihe
+    @Test
+    public void testCheckWinVertical() {
+        game.getBoard().place(0, 1, 'O');
+        game.getBoard().place(1, 1, 'O');
+        game.getBoard().place(2, 1, 'O');
+        assertTrue(game.checkWin('O'));
+    }
+
+    // 10. Positiver Test: checkWin erkennt diagonale Gewinnreihe
+    @Test
+    public void testCheckWinDiagonal() {
+        game.getBoard().place(0, 0, 'X');
+        game.getBoard().place(1, 1, 'X');
+        game.getBoard().place(2, 2, 'X');
+        assertTrue(game.checkWin('X'));
+    }
+
+    // 11. Negativer Test: Kein Gewinn (z.B. nur zwei gleiche Marker)
+    @Test
+    public void testCheckWinNegative() {
+        game.getBoard().place(0, 0, 'X');
+        game.getBoard().place(0, 1, 'X');
+        assertFalse(game.checkWin('X'));
+    }
+
+    // 12. Positiver Test: isDraw erkennt Unentschieden
+    @Test
+    public void testIsDrawPositive() {
+        char[][] fullBoard = {
+                {'X', 'O', 'X'},
+                {'X', 'X', 'O'},
+                {'O', 'X', 'O'}
+        };
+        for (int i = 0; i < 3; i++)
+            for (int j = 0; j < 3; j++)
+                game.getBoard().place(i, j, fullBoard[i][j]);
+
+        assertTrue(game.isDraw());
+    }
+
+    // 13. Negativer Test: isDraw bei leerem Feld
+    @Test
+    public void testIsDrawNegative() {
+        assertFalse(game.isDraw());
+    }
+
+
 }
